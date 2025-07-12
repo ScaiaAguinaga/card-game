@@ -1,16 +1,30 @@
-import { useState } from 'react'
+import { useState } from "react";
 
-import HomeMenu from './components/HomeMenu'
-import GameBoard from './components/GameBoard'
-
+import HomeMenu from "./components/HomeMenu";
+import GameBoard from "./components/GameBoard";
 
 export default function App() {
-  const [screen, setScreen] = useState('home'); // or 'game' screen
+  const [screen, setScreen] = useState("home");
+
+  /** Test Buttons */
+  const handleHit = () => {
+    console.log("Hit button clicked");
+  };
+
+  const handleStand = () => {
+    console.log("Stand button clicked");
+  };
 
   return (
-    <div className="app">
+    <>
       {screen === "home" && <HomeMenu onStart={() => setScreen("game")} />}
-      {screen === "game" && <GameBoard onQuit={() => setScreen("home")} />}
-    </div>
+      {screen === "game" && (
+        <GameBoard
+          onQuit={() => setScreen("home")}
+          onHit={handleHit}
+          onStand={handleStand}
+        />
+      )}
+    </>
   );
 }
