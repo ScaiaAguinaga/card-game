@@ -1,7 +1,15 @@
-export default function GameBoard({ onQuit, onHit, onStand }) {
+import DeckContainer from "./DeckContainer";
+
+export default function GameBoard({ onQuit, onHit, onStand, playerCards, dealerCards }) {
   return (
-    <div className="bg-green-800 h-screen">
-      {/** Game UI */}
+    <div className="bg-green-800 h-screen flex flex-col justify-between">
+      {/** Deck Containers: (Dealer (TOP) and Player (BOTTOM) */}
+      <div className="flex-shrink-0 mt-10">
+        <DeckContainer cards={dealerCards} title="Dealer" />
+      </div>
+      <div className="flex-shrink-0 mb-25">
+        <DeckContainer cards={playerCards} title="Player" />
+      </div>
 
       {/*** Game Actions */}
       <div className="flex flex-row fixed space-x-4 bottom-5 left-1/2 -translate-x-1/2">
