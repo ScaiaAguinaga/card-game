@@ -14,7 +14,7 @@ class Player():
     self.hand = []
   
   # Adds dealt card to player hand
-  def hit(self, card):
+  def add_card(self, card):
     self.hand.append(card)
     self.hand_value = self.evaluate_hand()
 
@@ -35,5 +35,16 @@ class Player():
     while total > 21 and aces > 0:
       total -= 10  # Convert ace from 11 to 1
       aces -= 1
-    
     return total
+  
+  def to_dict(self):
+    return {
+      "player_name": self.name,
+      "player_hand": self.hand
+    }
+  
+  @classmethod
+  def from_dict(cls, data):
+    new_player = cls(data["player_name"])
+    new_player.hand = data["player_hand"]
+    return new_player

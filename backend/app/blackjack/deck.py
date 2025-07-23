@@ -27,3 +27,12 @@ class Deck():
   # Resets the deck to a fresh unshuffled state 
   def reset_deck(self):
     self._create_deck()
+
+  def to_dict(self):
+    return {"deck": self.deck}
+  
+  @classmethod
+  def from_dict(cls, data):
+    new_deck = cls()
+    new_deck.deck = data["deck"]
+    return new_deck
