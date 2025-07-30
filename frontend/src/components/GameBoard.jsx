@@ -1,14 +1,22 @@
 import DeckContainer from "./DeckContainer";
 
-export default function GameBoard({ onQuit, onHit, onStand, playerCards, dealerCards }) {
+export default function GameBoard({
+  onQuit,
+  onHit,
+  onStand,
+  playerCards,
+  dealerCards,
+  playerScore,
+  dealerScore,
+}) {
   return (
     <div className="bg-green-800 h-screen flex flex-col justify-between">
       {/** Deck Containers: (Dealer (TOP) and Player (BOTTOM) */}
       <div className="flex-shrink-0 mt-10">
-        <DeckContainer cards={dealerCards} title="Dealer" />
+        <DeckContainer cards={dealerCards} title="Dealer" score={dealerScore} />
       </div>
       <div className="flex-shrink-0 mb-25">
-        <DeckContainer cards={playerCards} title="Player" />
+        <DeckContainer cards={playerCards} title="Player" score={playerScore} />
       </div>
 
       {/*** Game Actions */}
